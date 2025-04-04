@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" class="css">
+</head>
+<body>
+   
+    <div class="container">
+         <h1> Guess a Number</h1>
+        <input type="number" id="guestinput" placeholder="enter the number" class="input">
+        <button id="guestbtn" class="btn">Guest</button>
+        <p class="feedback" id="feedback"></p>
+        <p id="attemps"></p>
+    </div>
+
+    <script>
+        let secretNumber=99;
+        let attempts=0;
+        let guestbtn=document.getElementById('guestbtn');
+        function checkguest(){
+            console.log("inside gues number function");
+            const userGuest=document.getElementById('guestinput').value;
+            const feedback=document.getElementById('feedback');
+            const attempsDisplay=document.getElementById('attemps');
+            console.log(typeof(userGuest));
+            if(!userGuest){
+                feedback.textContent="Please enter a number";
+                feedback.style.color='red';
+            }
+           const Guest=parseInt(userGuest);
+           if(Guest==secretNumber){
+            attempts++;
+               feedback.textContent=`congratulation! you have guest the number after ${attempts} attempt`;
+                feedback.style.color='yellow';
+           }
+           else{
+             attempts++;
+               feedback.textContent=`wrong guest! Total attempts so far are ${attempts}`;
+                feedback.style.color='white';
+           }
+        }
+
+        guestbtn.addEventListener('click',checkguest);
+       userGuest.value = "";
+    </script>
+    
+</body>
+</html>
